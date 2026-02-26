@@ -39,3 +39,14 @@ npm-debug.log
 *.db
 *.db-*
 
+# Editor / IDE
+.elixir_ls/
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+
+# Local env files
+.env
+.env.*
