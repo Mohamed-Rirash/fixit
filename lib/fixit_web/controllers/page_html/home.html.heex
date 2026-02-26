@@ -1,0 +1,262 @@
+<Layouts.flash_group flash={@flash} />
+<section class="relative overflow-hidden bg-[#0B0F17] text-[#F3F4F6]">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.28),transparent_38%),radial-gradient(circle_at_80%_70%,rgba(37,99,235,0.2),transparent_35%),linear-gradient(180deg,#0B0F17_0%,#0A0F1A_55%,#080C14_100%)]">
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 pb-20 pt-12 sm:px-6 lg:px-8 lg:pt-16">
+    <section class="mx-auto max-w-4xl text-center">
+      <p class="inline-flex rounded-full border border-blue-400/35 bg-blue-500/10 px-3 py-1 text-xs font-semibold tracking-[0.1em] text-blue-200">
+        New — Smart Incident Collaboration 2.0
+      </p>
+      <h1 class="mt-6 text-5xl font-black tracking-tight text-white sm:text-7xl">
+        Debug APIs Faster, <span class="block text-[#3B82F6]">Together</span>
+      </h1>
+      <p class="mx-auto mt-5 max-w-3xl text-base leading-7 text-[#9CA3AF] sm:text-lg">
+        The collaborative control center for engineering teams to track, triage, and fix API failures in real-time. Stop guessing, start fixing.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <%= if @current_scope do %>
+          <.link
+            navigate={~p"/dashboard"}
+            class="rounded-lg bg-[#3B82F6] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/40 transition hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/70 active:translate-y-px"
+          >
+            Open Dashboard
+          </.link>
+        <% else %>
+          <.link
+            navigate={~p"/users/register"}
+            class="rounded-lg bg-[#3B82F6] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/40 transition hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/70 active:translate-y-px"
+          >
+            Start Free Trial
+          </.link>
+          <button
+            type="button"
+            class="rounded-lg border border-[#1F2937] bg-white/5 px-5 py-3 text-sm font-semibold text-[#F3F4F6] transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/50 active:translate-y-px"
+          >
+            Watch Demo
+          </button>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="mt-14 rounded-xl border border-[#1F2937] bg-[#111827]/75 p-4 shadow-xl shadow-black/30">
+      <div class="rounded-lg border border-[#1F2937] bg-[#0f1625]">
+        <div class="flex items-center gap-2 border-b border-[#1F2937] px-4 py-2">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-amber-400/70"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span>
+          <span class="ml-auto text-[10px] uppercase tracking-[0.1em] text-[#9CA3AF]">
+            dashboard.fixit.dev
+          </span>
+        </div>
+
+        <div class="grid md:grid-cols-[1fr_2fr]">
+          <aside class="border-b border-[#1F2937] p-4 md:border-b-0 md:border-r">
+            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-[#9CA3AF]">
+              Recent Incidents
+            </p>
+            <div class="mt-3 space-y-2 text-xs">
+              <div class="rounded-md border border-[#1F2937] bg-[#141A23] px-3 py-2">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-blue-300">POST /api/v1/checkout</span>
+                  <span class="rounded bg-red-500/20 px-2 py-0.5 text-red-300">500</span>
+                </div>
+              </div>
+              <div class="rounded-md border border-[#1F2937] bg-[#141A23] px-3 py-2">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-blue-300">GET /api/v1/users</span>
+                  <span class="rounded bg-amber-500/20 px-2 py-0.5 text-amber-300">429</span>
+                </div>
+              </div>
+              <div class="rounded-md border border-[#1F2937] bg-[#141A23] px-3 py-2">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-semibold text-blue-300">PUT /api/v1/profile</span>
+                  <span class="rounded bg-red-500/20 px-2 py-0.5 text-red-300">502</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="p-4">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-sm font-semibold text-white">Checkout Service Failure</p>
+                <p class="text-xs text-[#9CA3AF]">Last seen 2 mins ago • 142 occurrences</p>
+              </div>
+              <button
+                type="button"
+                class="rounded-md bg-[#3B82F6]/80 px-2.5 py-1 text-xs font-semibold text-white transition hover:bg-[#3B82F6]"
+              >
+                Resolve
+              </button>
+            </div>
+            <pre class="mt-3 overflow-auto rounded-md border border-[#1F2937] bg-[#111827] p-3 font-mono text-xs text-[#9CA3AF]">Error: Payment gateway timeout
+at processRequest (/app/services/checkout.js:42:15)
+at async validatePayment (/app/lib/stripe.js:108:8)
+at async Route.dispatch (/app/node_modules/express/lib/router/index.js:114:3)</pre>
+            <div class="mt-3 flex h-16 items-end gap-2">
+              <div class="h-3 w-full rounded-sm bg-blue-900/40"></div>
+              <div class="h-6 w-full rounded-sm bg-blue-800/50"></div>
+              <div class="h-5 w-full rounded-sm bg-blue-900/45"></div>
+              <div class="h-10 w-full rounded-sm bg-blue-700/60"></div>
+              <div class="h-14 w-full rounded-sm bg-blue-500/85"></div>
+              <div class="h-10 w-full rounded-sm bg-blue-600/70"></div>
+              <div class="h-4 w-full rounded-sm bg-blue-900/40"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-12 border-y border-[#1F2937] py-8">
+      <p class="text-center text-xs font-semibold uppercase tracking-[0.14em] text-[#9CA3AF]">
+        Trusted by engineering teams at
+      </p>
+      <div class="mx-auto mt-6 grid max-w-5xl grid-cols-3 gap-4 sm:grid-cols-6">
+        <div :for={_ <- 1..6} class="h-10 rounded-md border border-[#1F2937] bg-[#141A23]"></div>
+      </div>
+    </section>
+
+    <section class="mt-14 text-center">
+      <p class="text-sm font-semibold text-[#3B82F6]">Deploy with confidence</p>
+      <h2 class="mx-auto mt-3 max-w-3xl text-3xl font-black tracking-tight text-white sm:text-4xl">
+        Everything you need to maintain API reliability
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-[#9CA3AF]">
+        FixIt integrates directly into your workflow, providing instant visibility without configuration overhead.
+      </p>
+    </section>
+
+    <section class="mt-10 grid gap-4 md:grid-cols-3">
+      <article class="rounded-lg border border-[#1F2937] bg-[#141A23] p-5 shadow-md shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+        <div class="inline-flex rounded-md bg-blue-500/15 p-2 text-blue-300">
+          <.icon name="hero-signal" class="size-5" />
+        </div>
+        <h3 class="mt-3 text-base font-bold text-white">Real-time API Tracking</h3>
+        <p class="mt-2 text-sm text-[#9CA3AF]">
+          Catch 500 errors before your customers do. Monitor every request and alert instantly.
+        </p>
+      </article>
+
+      <article class="rounded-lg border border-[#1F2937] bg-[#141A23] p-5 shadow-md shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+        <div class="inline-flex rounded-md bg-blue-500/15 p-2 text-blue-300">
+          <.icon name="hero-users" class="size-5" />
+        </div>
+        <h3 class="mt-3 text-base font-bold text-white">Collaborative Debugging</h3>
+        <p class="mt-2 text-sm text-[#9CA3AF]">
+          Annotate stack traces, assign ownership, and track resolution status with your team.
+        </p>
+      </article>
+
+      <article class="rounded-lg border border-[#1F2937] bg-[#141A23] p-5 shadow-md shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+        <div class="inline-flex rounded-md bg-blue-500/15 p-2 text-blue-300">
+          <.icon name="hero-command-line" class="size-5" />
+        </div>
+        <h3 class="mt-3 text-base font-bold text-white">Seamless Integration</h3>
+        <p class="mt-2 text-sm text-[#9CA3AF]">
+          Drop-in SDKs for Node.js, Python, Go, and Ruby with minimal setup.
+        </p>
+      </article>
+    </section>
+
+    <section class="mt-16 grid gap-6 rounded-xl border border-[#1F2937] bg-gradient-to-r from-[#141A23] to-[#111827] p-6 lg:grid-cols-[1.3fr_1fr] lg:p-8">
+      <div>
+        <h3 class="text-3xl font-black tracking-tight text-white">Ready to fix your APIs?</h3>
+        <p class="mt-3 max-w-xl text-[#9CA3AF]">
+          Join thousands of developers debugging faster with FixIt. Get full observability into your API layer today.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <input
+            type="email"
+            placeholder="Enter your work email"
+            class="w-full rounded-lg border border-[#1F2937] bg-[#0B0F17] px-3 py-2 text-sm text-[#F3F4F6] outline-none transition placeholder:text-[#9CA3AF] focus:border-[#3B82F6] focus:ring-2 focus:ring-blue-400/20 sm:w-72"
+          />
+          <%= if @current_scope do %>
+            <.link
+              navigate={~p"/dashboard"}
+              class="rounded-lg bg-[#3B82F6] px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/70 active:translate-y-px"
+            >
+              Open dashboard
+            </.link>
+          <% else %>
+            <.link
+              navigate={~p"/users/register"}
+              class="rounded-lg bg-[#3B82F6] px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/70 active:translate-y-px"
+            >
+              Get started
+            </.link>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="rounded-lg border border-[#1F2937] bg-[#0f1625] p-5">
+        <ul class="space-y-2 text-sm text-[#F3F4F6]">
+          <li class="flex items-center gap-2">
+            <.icon name="hero-check-circle" class="size-5 text-[#22C55E]" /> Unlimited Error Logs
+          </li>
+          <li class="flex items-center gap-2">
+            <.icon name="hero-check-circle" class="size-5 text-[#22C55E]" /> 7-Day Data Retention
+          </li>
+          <li class="flex items-center gap-2">
+            <.icon name="hero-check-circle" class="size-5 text-[#22C55E]" /> Slack & Email Alerts
+          </li>
+          <li class="flex items-center gap-2">
+            <.icon name="hero-check-circle" class="size-5 text-[#22C55E]" />
+            Team Collaboration Tools
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="mt-16 border-t border-[#1F2937] pt-10">
+      <div class="grid gap-8 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="rounded-lg bg-blue-500/20 p-1.5 text-blue-300">
+              <.icon name="hero-bug-ant" class="size-4" />
+            </span>
+            <span class="text-lg font-black tracking-tight text-white">FixIt</span>
+          </div>
+          <p class="mt-3 max-w-xs text-sm text-[#9CA3AF]">
+            Making APIs reliable, one stack trace at a time.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-white">Solutions</p>
+          <ul class="mt-3 space-y-2 text-sm text-[#9CA3AF]">
+            <li>API Monitoring</li>
+            <li>Error Tracking</li>
+            <li>Log Management</li>
+            <li>Integrations</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-white">Support</p>
+          <ul class="mt-3 space-y-2 text-sm text-[#9CA3AF]">
+            <li>Documentation</li>
+            <li>API Reference</li>
+            <li>System Status</li>
+            <li>Contact Sales</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold text-white">Company</p>
+          <ul class="mt-3 space-y-2 text-sm text-[#9CA3AF]">
+            <li>About</li>
+            <li>Blog</li>
+            <li>Careers</li>
+            <li>Legal</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="mt-10 border-t border-[#1F2937] pt-6 text-center text-xs text-[#9CA3AF]">
+        © 2026 FixIt. All rights reserved.
+      </p>
+    </footer>
+  </div>
+</section>
