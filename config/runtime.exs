@@ -28,7 +28,10 @@ if config_env() == :prod do
       mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "example.com"
+  host =
+    System.get_env("PHX_HOST") ||
+      System.get_env("RENDER_EXTERNAL_HOSTNAME") ||
+      "example.com"
 
   config :fixit, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
@@ -36,6 +39,7 @@ if config_env() == :prod do
     # IMPORTANT
     server: true,
     url: [host: host, port: 443, scheme: "https"],
+    check_origin: ["//#{host}"],
     http: [
       # bind to all interfaces
       ip: {0, 0, 0, 0},

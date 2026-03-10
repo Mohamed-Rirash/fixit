@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :fixit, Fixit.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "fixit_user",
+  password: "fixit_password",
   hostname: "localhost",
   database: "fixit_dev",
   stacktrace: true,
