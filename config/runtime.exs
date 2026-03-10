@@ -39,7 +39,7 @@ if config_env() == :prod do
     # IMPORTANT
     server: true,
     url: [host: host, port: 443, scheme: "https"],
-    check_origin: ["//#{host}"],
+    check_origin: ["https://#{host}", "//#{host}"],
     http: [
       # bind to all interfaces
       ip: {0, 0, 0, 0},
