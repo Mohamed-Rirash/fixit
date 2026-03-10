@@ -25,6 +25,9 @@ config :swoosh, api_client: Swoosh.ApiClient.Req
 # Disable Swoosh Local Memory Storage
 config :swoosh, local: false
 
+# Use Resend in production
+config :fixit, Fixit.Mailer, adapter: Resend.Swoosh.Adapter
+
 # Do not print debug messages in production
 config :logger, level: :info
 

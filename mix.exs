@@ -60,6 +60,7 @@ defmodule Fixit.MixProject do
        compile: false,
        depth: 1},
       {:swoosh, "~> 1.16"},
+      {:resend, "~> 0.4.5"},
       {:req, "~> 0.5"},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
