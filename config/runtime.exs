@@ -51,5 +51,5 @@ if config_env() == :prod do
   config :fixit, Fixit.Mailer,
     api_key: System.fetch_env!("RESEND_API_KEY"),
     from_name: System.get_env("MAIL_FROM_NAME") || "Fixit",
-    from_email: System.get_env("MAIL_FROM_EMAIL") || "no-reply@fixit.local"
+    from_email: System.fetch_env!("MAIL_FROM_EMAIL")
 end
