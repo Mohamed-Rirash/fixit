@@ -22,7 +22,6 @@ RUN mix compile
 COPY priv priv
 COPY assets assets
 COPY lib lib
-COPY rel rel
 
 RUN mix assets.deploy
 RUN mix release --overwrite
@@ -45,4 +44,4 @@ WORKDIR /app
 
 COPY --from=builder /app/_build/prod/rel/fixit ./
 
-CMD ["/app/bin/server"]
+CMD ["/app/bin/fixit", "start"]
