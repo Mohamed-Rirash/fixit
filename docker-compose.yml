@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   postgres:
     image: postgres:16
@@ -7,21 +5,43 @@ services:
     restart: unless-stopped
 
     environment:
-      POSTGRES_USER: fixit_user
-      POSTGRES_PASSWORD: fixit_password
-      POSTGRES_DB: fixit_dev
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
 
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
 
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U fixit_user"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fixit_app
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PHX_HOST: ${PHX_HOST}
+      PORT: ${PORT}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      DATABASE_URL: ${DATABASE_URL}
+      RESEND_API_KEY: ${RESEND_API_KEY}
+      MAIL_FROM_EMAIL: ${MAIL_FROM_EMAIL}
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME}
+      POOL_SIZE: ${POOL_SIZE}
+    ports:
+      - "${APP_PORT}:4000"
+    command: ["/bin/sh", "-c", "/app/bin/migrate && /app/bin/server"]
 
 volumes:
   postgres_data:
