@@ -48,8 +48,19 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  resend_api_key =
+    System.get_env("RESEND_API_KEY") ||
+      System.get_env("RESEND_KEY") ||
+      raise("RESEND_API_KEY (or RESEND_KEY) is missing.")
+
+  mail_from_email =
+    System.get_env("MAIL_FROM_EMAIL") ||
+      System.get_env("SENDER_EMAIL") ||
+      raise("MAIL_FROM_EMAIL (or SENDER_EMAIL) is missing.")
+
   config :fixit, Fixit.Mailer,
-    api_key: System.fetch_env!("RESEND_API_KEY"),
+    adapter: Swoosh.Adapters.Resend,
+    api_key: resend_api_key,
     from_name: System.get_env("MAIL_FROM_NAME") || "Fixit",
-    from_email: System.fetch_env!("MAIL_FROM_EMAIL")
+    from_email: mail_from_email
 end

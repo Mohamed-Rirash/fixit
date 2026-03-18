@@ -19,14 +19,14 @@ config :fixit, FixitWeb.Endpoint,
     ]
   ]
 
-# Configure Swoosh API Client
+# Configure Swoosh API client for adapters that send over HTTP.
 config :swoosh, api_client: Swoosh.ApiClient.Req
 
 # Disable Swoosh Local Memory Storage
 config :swoosh, local: false
 
-# Use Resend in production
-config :fixit, Fixit.Mailer, adapter: Resend.Swoosh.Adapter
+# Use Swoosh's built-in Resend adapter in production.
+config :fixit, Fixit.Mailer, adapter: Swoosh.Adapters.Resend
 
 # Do not print debug messages in production
 config :logger, level: :info
